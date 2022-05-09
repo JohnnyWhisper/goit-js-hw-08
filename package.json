@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://johnnywhisper.github.io/goit-js-hw-08",
+  "homepage": "https://JohnnyWhisper.github.io/goit-js-hw-08",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/index.html --public-url /goit-js-hw-08/"
