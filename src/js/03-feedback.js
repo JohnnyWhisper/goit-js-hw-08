@@ -14,15 +14,18 @@ function getFormData(e) {
 function onSubmitForm(e) {
   e.preventDefault();
 
-  if (e.target.value === "") {
-    console.log("Поля мають бути заповнені");
-  } else {
+  if (!email.value || !message.value) {
+    return alert('Please complete all fields!');
+  }
+
+  
    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
-  };
+
 
   e.currentTarget.reset();
   localStorage.removeItem('feedback-form-state');
 }
+
 
 (function dataFromLocalStorage() {
   const data = JSON.parse(localStorage.getItem('feedback-form-state'));
