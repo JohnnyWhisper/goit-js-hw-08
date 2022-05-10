@@ -8,6 +8,9 @@ const formData = {};
 
 function getFormData(e) {
   formData[e.target.name] = e.target.value;
+  if (e.target.value === "") {
+    console.error ("Fields must not be empty");
+  }
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 }
 
