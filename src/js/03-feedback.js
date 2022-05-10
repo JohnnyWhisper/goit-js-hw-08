@@ -1,38 +1,41 @@
 import throttle from 'lodash.throttle';
 
 const formEl = document.querySelector('.feedback-form');
-formEl.addEventListener('input', throttle(getFormData, 500));
-formEl.addEventListener('submit', onSubmitForm);
+const inputEl = document.querySelector('input[name=email]');
+const textAreaEl = document.querySelector('textarea[name=message]');
 
-const formData = {};
+formEl.addEventListener('input', throttle(dataInLocalStoradge, 500));
+formEl.addEventListener('submit', onSubmitClick);
 
-function getFormData(e) {
-  formData[e.target.name] = e.target.value;
-  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+const savedData = localStorage.getItem('feedback-form-state');
+const parsedData = JSON.parse(savedData);
+
+if (parsedData) {
+  inputEl.value = parsedData.email;
+  textAreaEl.value = parsedData.message;
 }
 
-function onSubmitForm(e) {
-  e.preventDefault();
+function dataInLocalStoradge(e) {
+  const email = inputEl.value;
+  const message = textAreaEl.value;
+  localStorage.setItem('feedback-form-state', JSON.stringify({ email, message }));
+}
 
-  if (!email|| !message) {
+function onSubmitClick(e) {
+  e.preventDefault();
+  const email = e.currentTarget.elements.email.value;
+  const message = e.currentTarget.elements.message.value;
+
+  if (!email || !message) {
     return alert('Please complete all fields!');
   }
 
-  
-   console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+  const objectData = {
+    message,
+    email,
+  };
+  console.log(objectData);
 
-
-  e.currentTarget.reset();
   localStorage.removeItem('feedback-form-state');
+  formEl.reset();
 }
-
-
-(function dataFromLocalStorage() {
-  const data = JSON.parse(localStorage.getItem('feedback-form-state'));
-  const email = document.querySelector('.feedback-form input');
-  const message = document.querySelector('.feedback-form textarea');
-  if (data) {
-    email.value = data.email;
-    message.value = data.message;
-  }
-})();
