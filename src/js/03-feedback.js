@@ -14,7 +14,7 @@ function getFormData(e) {
 function onSubmitForm(e) {
   e.preventDefault();
 
-  if (!email.value || !message.value) {
+  if (!email|| !message) {
     return alert('Please complete all fields!');
   }
 
