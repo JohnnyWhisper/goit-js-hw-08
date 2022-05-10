@@ -31,8 +31,8 @@ function onSubmitClick(e) {
   }
 
   const objectData = {
-    message,
     email,
+    message,
   };
   console.log(objectData);
 
