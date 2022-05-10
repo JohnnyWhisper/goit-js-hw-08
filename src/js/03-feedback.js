@@ -27,7 +27,7 @@ function onSubmitClick(e) {
   const message = e.currentTarget.elements.message.value;
 
   if (!email || !message) {
-    return alert('Please complete all fields!');
+    return alert('Всі поля повинні бути заповнені');
   }
 
   const objectData = {
