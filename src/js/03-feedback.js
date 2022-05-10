@@ -17,7 +17,7 @@ function onSubmitForm(e) {
   if (e.target.value !== "") {
     console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
   } else {
-   console.log("Поля мають бути заповнені");
+   alert("Поля мають бути заповнені");
   }
 
   e.currentTarget.reset();
