@@ -14,7 +14,7 @@ function getFormData(e) {
 function onSubmitForm(e) {
   e.preventDefault();
 
-  if (e.target.value !== "") {
+  if (e.currentTarget.value !== "") {
     console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
   } else {
    alert("Поля мають бути заповнені");
